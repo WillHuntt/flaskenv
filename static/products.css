@@ -47,8 +47,12 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 200px;
+    width: 300px;
     background-color: #282828;
+}
+
+li {
+    border-top: 1px dotted #555;
 }
 
 li a{
@@ -62,4 +66,26 @@ li a{
 li a:hover {
     background-color: #3B3B3B;
     color: #fff;
+}
+
+li:last-child {
+    border-bottom: 1px dotted #555;
+}
+
+a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    color: white;
+    text-decoration: none;
+    font-family: 'Fira Code', monospace;
+    font-style: italic;
+    text-transform: capitalize;
+}
+
+a span {
+    font-size: 0.8rem;
+    color: #888;
+    align-items: right;
 }
