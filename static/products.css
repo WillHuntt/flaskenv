@@ -1,0 +1,65 @@
+/********* PRODUCT PAGE CSS ***********/
+
+
+
+/**************** RESET ***************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/**************** BODY ****************/
+body {
+    font-family:'Fira Code', monospace;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    background-color: #282828;
+}
+
+
+/**************** TEXT ****************/
+h1 {
+    /* Make text color white */
+    color: #fff;
+}
+
+h2 {
+    /* Make text color white */
+    color: #fff;
+}
+
+h3 {
+    /* Make text color white */
+    color: #fff;    
+}
+
+p {
+    /* Make text color white */
+    color: #fff;    
+}
+
+
+/********** PRODUCT NAVBAR *********/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #282828;
+}
+
+li a{
+    display: block;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+/* Change the link and background color on hover */
+li a:hover {
+    background-color: #3B3B3B;
+    color: #fff;
+}
