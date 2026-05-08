@@ -56,7 +56,10 @@ li {
 }
 
 li a{
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
     color: #fff;
     padding: 8px 16px;
     text-decoration: none;
@@ -68,12 +71,14 @@ li a:hover {
     color: #fff;
 }
 
+/* adds dotted line at the bottom of each item */
 li:last-child {
     border-bottom: 1px dotted #555;
 }
 
 a {
-    display: flex;
+    display: flex !important;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 15px 10px;
@@ -84,8 +89,11 @@ a {
     text-transform: capitalize;
 }
 
+/* For the chevrons at end of each item on menu */
 a span {
     font-size: 0.8rem;
     color: #888;
-    align-items: right;
+    display: inline-block;
+    align-items: center;
+    line-height: 1;
 }
