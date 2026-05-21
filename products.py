@@ -10,7 +10,7 @@ def catalog():
     cursor = conn.cursor()
 
     # Select all rows from your products table
-    cursor.execute("SELECT id, ProductName, Category, Amount, Price, Image FROM products")
+    cursor.execute("SELECT id, ProductName, Category, Amount, Price, Image, Brand, Description FROM products")
     db_rows = cursor.fetchall()
     conn.close()
     
@@ -27,7 +27,9 @@ def catalog():
             'category': row['Category'],
             'amount': row['Amount'],
             'price': row['Price'],
-            'image': image_b64
+            'image': image_b64,
+            'brand': row['Brand'],
+            'description': row['Description']
         })
         
     # Pass the list of all 7 items to your template file
@@ -51,8 +53,8 @@ def insert_product(name, category, amount, price, image_path):
     cur = con.cursor()
 
     query = """
-    INSERT INTO products (ProductName, Category, Amount, Price, Image)
-    VALUES (?, ?, ?, ?, ?)
+    INSERT INTO products (ProductName, Category, Amount, Price, Image, Brand, Description)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
     """
     cursor.execute(query, (name, category, amount, price, blob_data))
 
