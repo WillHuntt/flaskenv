@@ -64,103 +64,39 @@
 
                 <ul class="category-menu">
                     <li><button class="category-filter active" data-filter="all">All Items <span>&gt;</span></button></li>
+                    <li><button class="category-filter" data-filter="cpu-gpu">CPU/GPU <span>&gt;</span></button></li>                    
                     <li><button class="category-filter" data-filter="ram">RAM <span>&gt;</span></button></li>
                     <li><button class="category-filter" data-filter="cases">Cases <span>&gt;</span></button></li>
-                    <li><button class="category-filter" data-filter="cpu-gpu">CPU/GPU <span>&gt;</span></button></li>
-                    <li><button class="category-filter" data-filter="pc-components">Components <span>&gt;</span></button></li>
+                    <li><button class="category-filter" data-filter="powersupply">Power Supply <span>&gt;</span></button></li>
                     <li><button class="category-filter" data-filter="mice-keyboards">Peripherals <span>&gt;</span></button></li>
                     <li><button class="category-filter" data-filter="monitors">Monitors <span>&gt;</span></button></li>
                 </ul>
             </aside>
 <!-- End Products Sidebar -->
-<!-- Start Products Grid -->
-            <section class="products-main">
-                <div class="search-bar">
-                    <span class="search-icon">⌕</span>
-                    <input class="product-search" type="text" placeholder="Search for hardware..." aria-label="Search products">
-                </div>
 
-                <div class="product-grid">
-                    <article class="product-card" data-category="cpu-gpu" data-stock="available">
-                        <div class="product-image">
-                            <img src="{{ url_for('static', filename='images/GeForce5060tipny.png') }}" alt="High-end RTX 4090 Graphics Card">
-                            <button class="add-button" aria-label="Add RTX 4090 to cart">+</button>
-                        </div>
-                        <div class="product-info">
-                            <p>RTX 4090 Graphics Card</p>
-                            <strong>$199</strong>
-                        </div>
-                    </article>
-                    <article class="product-card" data-category="cpu-gpu" data-stock="available">
-                        <div class="product-image">
-                            <img src="{{ url_for('static', filename='images/SapphireNitro+.png') }}" alt="High-end RTX 4090 Graphics Card">
-                            <button class="add-button" aria-label="Add RTX 4090 to cart">+</button>
-                        </div>
-                        <div class="product-info">
-                            <p>Sapphire Nitro+ RX 9070XT Graphics Card</p>
-                            <strong>$199</strong>
-                        </div>
-                    </article>                    
+    <div class="catalog-container">
+        <!-- The loop takes your 7 products and outputs them one by one -->
+        {% for product in items %}
+        <div class="product-card">
+            
+            <div class="image-box">
+                {% if product.image %}
+                    <!-- Renders binary data if you upload an image later -->
+                    <img src="data:image/jpeg;base64,{{ product.image }}" alt="{{ product.name }}">
+                {% else %}
+                    <!-- Shows while your database cells are NULL -->
+                    <span>No Image Uploaded</span>
+                {% endif %}
+            </div>
 
-                    <article class="product-card" data-category="ram" data-stock="available">
-                        <div class="product-image">
-                            <img src="{{ url_for('static', filename='images/SapphireNitro+.png') }}" alt="32GB DDR5 Corsair RAM">
-                            <button class="add-button" aria-label="Add Corsair RAM to cart">+</button>
-                        </div>
-                        <div class="product-info">
-                            <p>Corsair 32GB RAM</p>
-                            <strong>$89</strong>
-                        </div>
-                    </article>
-
-                    <article class="product-card" data-category="cases" data-stock="available">
-                        <div class="product-image">
-                            <img src="{{ url_for('static', filename='images/SapphireNitro+.png') }}" alt="Gaming PC Case with glass panel">
-                            <button class="add-button" aria-label="Add Gaming Case to cart">+</button>
-                        </div>
-                        <div class="product-info">
-                            <p>Gaming PC Case</p>
-                            <strong>$129</strong>
-                        </div>
-                    </article>
-
-                    <article class="product-card" data-category="pc-components" data-stock="available">
-                        <div class="product-image">
-                            <img src="{{ url_for('static', filename='images/SapphireNitro+.png') }}" alt="750W Modular Power Supply">
-                            <button class="add-button" aria-label="Add 750W Power Supply to cart">+</button>
-                        </div>
-                        <div class="product-info">
-                            <p>750W Power Supply</p>
-                            <strong>$99</strong>
-                        </div>
-                    </article>
-
-                    <article class="product-card" data-category="mice-keyboards" data-stock="available">
-                        <div class="product-image">
-                            <img src="{{ url_for('static', filename='images/SapphireNitro+.png') }}" alt="RGB Mechanical Keyboard">
-                            <button class="add-button" aria-label="Add Mechanical Keyboard to cart">+</button>
-                        </div>
-                        <div class="product-info">
-                            <p>Mechanical Keyboard</p>
-                            <strong>$119</strong>
-                        </div>
-                    </article>
-
-                    <article class="product-card" data-category="monitors" data-stock="out">
-                        <div class="product-image">
-                            <img src="{{ url_for('static', filename='images/SapphireNitro+.png') }}" alt="4K Gaming Monitor">
-                            <button class="add-button" aria-label="Add Monitor to cart">+</button>
-                        </div>
-                        <div class="product-info">
-                            <p>Gaming Monitor (Out of Stock)</p>
-                            <strong>$249</strong>
-                        </div>
-                    </article>
-                </div>
-            </section>
-        </main>
+            <h3>{{ product.name }}</h3>
+            <p><strong>Category:</strong> {{ product.category }}</p>
+            <p><strong>Stock:</strong> {{ product.amount }} units</p>
+            <p class="price-tag">${{ "%.2f"|format(product.price) }}</p>
+            
+        </div>
+        {% endfor %}
     </div>
-<!-- End of products grid -->
 <!-- Products JS linkage --> 
     <script src="../static/js/products.js"></script>
 </body>
